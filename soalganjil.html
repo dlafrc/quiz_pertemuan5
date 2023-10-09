@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Della Rachmatika Noer Intanty (2204767)</title>
+    <style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    input[type=text], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+    }
+
+    label {
+        padding: 12px 12px 12px 0;
+        display: inline-block;
+    }
+
+    input[type=submit] {
+        background-color: #aa7804;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: right;
+    }
+
+    input[type=submit]:hover {
+        background-color: #aa7804;
+    }
+
+    .container {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
+
+    .col-25 {
+        float: left;
+        width: 25%;
+        margin-top: 6px;
+    }
+
+    .col-75 {
+        float: left;
+        width: 75%;
+        margin-top: 6px;
+    }
+
+    /* Clear floats after the columns */
+    .row::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 600px) {
+      .col-25, .col-75, input[type=submit] {
+          width: 100%;
+          margin-top: 0;
+      }
+    }
+    </style>
+    <script>
+    function tampilHasil()
+    {
+        //Lengkapi kode berikut ini untuk menampilkan hasil
+        /* 
+            Ketentuan
+            =====================
+
+            Harga Kopi
+            =====================
+            Kopi Arabika = 10.000
+            Kopi Robusta = 15.000
+            Kopi Liberika = 20.000
+            Kopi Ekselsa = 25.000
+
+            Harga Ukuran
+            =====================
+            Sedang = 2.500
+            Besar  = 5.000
+
+            Tampilkan
+            =====================
+            Nama :
+            Alamat :
+            Pesanan Jenis Kopi :
+            Ukuran :
+            Total : Harga Kopi + Harga Ukuran 
+        */
+      total = 0
+
+      nama  = document.getElementById("inputNama").value
+
+      jeniskopi= document.getElementById("jenisKopi").value
+      if (jeniskopi == 1) {
+        kopi = "Kopi Arabika"
+        total += 10000
+      } else if (jeniskopi == 2) {
+        kopi = "Kopi Robusta"
+        total += 15000
+      } else if (jeniskopi == 3) {
+        kopi = "Kopi Liberika"
+        total += 20000
+      } else if (jeniskopi == 4) {
+        kopi = "Kopi Ekselsa"
+        total += 25000
+      }
+
+      alamat = document.getElementById("alamatPemesan").value
+
+      if (document.getElementById("sedang").checked == true){
+        ukuran = "Sedang"
+        total += 2500
+      } else if (document.getElementById("besar").checked == true){
+        ukuran = "Besar"
+        total += 5000
+      }
+
+      document.getElementById("hasilNama").innerHTML = "Nama : " + nama
+      document.getElementById("hasilAlamat").innerHTML = "Alamat : " + alamat
+      document.getElementById("hasilJenisKopi").innerHTML = "Pesanan Jenis Kopi : " + kopi
+      document.getElementById("hasilUkuran").innerHTML = "Ukuran : " + ukuran
+      document.getElementById("hasilTotal").innerHTML = "Total : " + total
+    }
+
+    </script> 
+</head>   
+<body>
+
+<h2>Form Pemesanan Coffee</h2>
+
+<div class="container">
+  <form>
+  <div class="row">
+    <div class="col-25">
+      <label for="nama">Nama Lengkap Pemesan</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="inputNama" placeholder="Masukan Nama Anda ..." required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="jenisKopi">Pilih Jenis Kopi</label>
+    </div>
+    <div class="col-75">
+      <select id="jenisKopi" name="jenisKopi">
+        <option value=1>Kopi Arabika</option>
+        <option value=2>Kopi Robusta</option>
+        <option value=3>Kopi Liberika</option>
+        <option value=4>Kopi Ekselsa</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="alamatPemesan">Alamat Pemesan</label>
+    </div>
+    <div class="col-75">
+      <textarea id="alamatPemesan" name="alamatPemesan" placeholder="Alamat Pemesan.." style="height:200px"></textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="ukuran">Ukuran</label>
+    </div>
+    <div class="col-25">
+      <input type="radio" id="sedang" name="ukuran" value="Sedang">
+  <label for="sedang">Sedang</label><br>
+    </div>
+    <div class="col-25">
+      <input type="radio" id="besar" name="ukuran" value="Besar">
+  <label for="besar">Besar</label><br>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+
+    <input type="button" onClick=tampilHasil() value="Simpan">
+  
+  </div>
+  </form>
+</div>
+
+<div class="row">
+    <div class="col-100">
+      <p id="hasilNama"></p>
+      <p id="hasilJenisKopi"></p>
+      <p id="hasilAlamat"></p>
+      <p id="hasilUkuran"></p>
+      <p id="hasilTotal"></p>
+    </div>
+</div>
+
+</body>
+</html>
